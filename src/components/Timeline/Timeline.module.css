@@ -1,0 +1,225 @@
+.timelineSection {
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 12px;
+}
+
+.underline {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.timelineContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.timelineLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-secondary) 50%, var(--accent-tertiary) 100%);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Timeline Items styling */
+.timelineItem {
+  position: relative;
+  width: 50%;
+  padding: 20px 40px;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.left {
+  left: 0;
+  text-align: right;
+}
+
+.right {
+  left: 50%;
+  text-align: left;
+}
+
+/* Timeline nodes */
+.timelineNode {
+  position: absolute;
+  top: 30px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--primary-bg);
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 0 15px var(--accent);
+}
+
+.nodeInner {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-tertiary) 100%);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left .timelineNode {
+  right: -18px;
+}
+
+.right .timelineNode {
+  left: -18px;
+}
+
+/* Card layout */
+.timelineCard {
+  padding: 28px;
+  text-align: left;
+  transition: var(--transition-smooth);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .cardHeader {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.headerInfo {
+  flex: 1;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.cardSubTitle {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.cardDate {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.eduDate {
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  color: var(--accent);
+}
+
+.expDate {
+  background: rgba(255, 0, 60, 0.08);
+  border: 1px solid rgba(255, 0, 60, 0.2);
+  color: var(--accent-secondary);
+}
+
+.cardBody {
+  font-size: 0.95rem;
+}
+
+.gradeBadge {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(0, 240, 255, 0.05);
+  border: 1px dashed rgba(0, 240, 255, 0.3);
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.cardText {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.bulletsList {
+  padding-left: 20px;
+  color: var(--text-secondary);
+}
+
+.bulletsList li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.bulletsList li::marker {
+  color: var(--accent-secondary);
+}
+
+/* Responsiveness for timeline */
+@media (max-width: 768px) {
+  .timelineLine {
+    left: 20px;
+  }
+  
+  .timelineItem {
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 0;
+    margin-bottom: 40px;
+  }
+  
+  .left, .right {
+    left: 0;
+    text-align: left;
+  }
+  
+  .left .timelineNode, .right .timelineNode {
+    left: 2px;
+  }
+}

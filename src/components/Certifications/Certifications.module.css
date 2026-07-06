@@ -1,0 +1,385 @@
+/* ── Section ── */
+.certSection {
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 12px;
+}
+
+.underline {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* ── Card ── */
+.certCard {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+}
+
+.certCard:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--accent-col, var(--accent));
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 24px var(--glow, rgba(0, 240, 255, 0.15));
+}
+
+/* Mouse-tracking radial glow */
+.mouseGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    280px circle at var(--mx, 50%) var(--my, 50%),
+    var(--glow, rgba(0, 240, 255, 0.12)),
+    transparent 80%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 0;
+}
+
+.certCard:hover .mouseGlow {
+  opacity: 1;
+}
+
+/* ── Thumbnail area ── */
+.thumb {
+  position: relative;
+  height: 170px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.certCard:hover .thumbImg {
+  transform: scale(1.04);
+}
+
+/* PDF thumbnail */
+.pdfThumb {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #0d0d14;
+  overflow: hidden;
+}
+
+.pdfThumbFrame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: none;  /* non-interactive inside card */
+  transform-origin: top left;
+}
+
+.pdfBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(9, 9, 11, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--accent-secondary);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 5px;
+  backdrop-filter: blur(6px);
+  z-index: 2;
+}
+
+/* Hover overlay on thumbnail */
+.thumbOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(9, 9, 11, 0.65);
+  opacity: 0;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(4px);
+  z-index: 3;
+}
+
+.certCard:hover .thumbOverlay {
+  opacity: 1;
+}
+
+.zoomIcon {
+  filter: drop-shadow(0 0 6px var(--accent));
+  color: var(--accent);
+}
+
+/* ── Text info ── */
+.cardInfo {
+  position: relative;
+  padding: 20px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  z-index: 1;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.iconWrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: rgba(0, 240, 255, 0.07);
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-col, var(--accent));
+}
+
+.certDate {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.certTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.certIssuer {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.viewBtn {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-family: var(--font-heading);
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--accent-col, var(--accent));
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: var(--transition-smooth);
+}
+
+.viewBtn:hover {
+  text-shadow: 0 0 10px var(--accent-col, var(--accent));
+  transform: translateX(2px);
+}
+
+/* ────────────── LIGHTBOX ────────────── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.lightboxContent {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  max-height: 90vh;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 80px rgba(0, 240, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  background: #0d0d14;
+}
+
+/* Lightbox top bar */
+.lightboxHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.lightboxMeta {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.lightboxTitle {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lightboxIssuer {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lightboxActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.openTabBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.openTabBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(0, 240, 255, 0.05);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+}
+
+.closeBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.closeBtn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 0, 60, 0.1);
+  border-color: var(--accent-secondary);
+}
+
+/* Lightbox body */
+.lightboxBody {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.lightboxImg {
+  max-width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  display: block;
+}
+
+.pdfFrame {
+  width: 100%;
+  height: 78vh;
+  border: none;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pdfFrame {
+    height: 65vh;
+  }
+
+  .lightboxTitle,
+  .lightboxIssuer {
+    font-size: 0.8rem;
+  }
+}
