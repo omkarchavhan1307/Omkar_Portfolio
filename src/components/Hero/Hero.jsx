@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaFileDownload } from 'react-icons/fa';
-import professionalImg from '../../assets/Omkar\'s_Professional_Image.png';
+import professionalImg from '../../assets/Omkar\'s_Professional_Image.webp';
 import styles from './Hero.module.css';
 
 const titles = [
